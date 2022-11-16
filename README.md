@@ -1,11 +1,13 @@
 # manga-catalogue
 
 ```
+pip install virtualenv
+
+virtualenv env
+
 env\scripts\activate
 
 pip install django
-
-cd manga_catalogue_back
 
 python manage.py runserver
 ```
