@@ -3,6 +3,10 @@
 ```
 pip install virtualenv
 
+pip install djangorestframework
+
+python -m pip install django-cors-headers
+
 virtualenv env
 
 env\scripts\activate
