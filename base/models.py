@@ -3,18 +3,20 @@ from django.db import models
 # Create your models here.
 
 class MangaTitle(models.Model):
-    name = models.CharField(max_length=200)
-    description = models.TextField(null=True, blank=True)
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-    firstCoverImage = models.TextField(null=True, blank=True)
-    authors = models.TextField(null=True, blank=True)
-    startDate = models.DateTimeField(null=True)
-    endDate = models.DateTimeField(null=True)
-    chapterCount = models.IntegerField(default=1)
-    volumeCount = models.IntegerField(default=0)
-    status = models.CharField(max_length=200, null=True)
-    genres = models.TextField(null=True, blank=True)
+
+    name = models.CharField(max_length=200)
+    description = models.TextField(null=True, blank=True)
+    chapterCount = models.PositiveSmallIntegerField(default=1)
+    volumeCount = models.PositiveSmallIntegerField(default=0)
+    startDate = models.DateField(null=True)
+    endDate = models.DateField(null=True)
+
+    firstCoverImage = models.TextField(null=True, blank=True) #TODO: add some image field or something
+    authors = models.TextField(null=True, blank=True) #TODO: add relation with Author model
+    status = models.CharField(max_length=200, null=True) #TODO: add enum
+    genres = models.TextField(null=True, blank=True) #TODO: think what to do with it
 
     def __str__(self):
         return self.name
