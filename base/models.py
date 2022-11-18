@@ -12,8 +12,8 @@ class MangaTitle(models.Model):
     volumeCount = models.PositiveSmallIntegerField(default=0)
     startDate = models.DateField(null=True)
     endDate = models.DateField(null=True)
+    firstCoverImage = models.ImageField(upload_to='base/uploads/covers', null=True, blank=True)
 
-    firstCoverImage = models.TextField(null=True, blank=True) #TODO: add some image field or something
     authors = models.TextField(null=True, blank=True) #TODO: add relation with Author model
     status = models.CharField(max_length=200, null=True) #TODO: add enum
     genres = models.TextField(null=True, blank=True) #TODO: think what to do with it

@@ -5,6 +5,8 @@ pip install virtualenv
 
 pip install djangorestframework
 
+python -m pip install Pillow
+
 python -m pip install django-cors-headers
 
 virtualenv env
