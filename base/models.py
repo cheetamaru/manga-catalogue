@@ -3,6 +3,12 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
+class MangaAuthor(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
 class MangaTitle(models.Model):
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
@@ -24,7 +30,8 @@ class MangaTitle(models.Model):
 
     status = models.CharField(max_length=12, null=True, choices=Status.choices)
 
-    authors = models.TextField(null=True, blank=True) #TODO: add relation with Author model
+    authors = models.ManyToManyField(MangaAuthor, related_name="authors", null=True, blank=True)
+
     genres = models.TextField(null=True, blank=True) #TODO: think what to do with it
 
     def __str__(self):
