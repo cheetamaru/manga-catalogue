@@ -1,3 +1,4 @@
+from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from base.models import MangaTitle
@@ -14,12 +15,22 @@ def getRoutes(request):
 
 @api_view(['GET'])
 def getList(request):
-    list = MangaTitle.objects.all()
-    serializer = MangaTitleSerializer(list, many=True)
-    return Response(serializer.data)
+    try:
+        list = MangaTitle.objects.all()
+    except MangaTitle.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        serializer = MangaTitleSerializer(list, many=True)
+        return Response(serializer.data)
 
 @api_view(['GET'])
 def getById(request, pk):
-    item = MangaTitle.objects.get(id=pk)
-    serializer = MangaTitleSerializer(item, many=False)
-    return Response(serializer.data)
+    try:
+        item = MangaTitle.objects.get(id=pk)
+    except MangaTitle.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = MangaTitleSerializer(item, many=False)
+        return Response(serializer.data)
