@@ -1,8 +1,12 @@
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.generics import ListAPIView
+
 from base.models import MangaTitle
 from .serializers import MangaTitleSerializer
+
 
 @api_view(['GET'])
 def getRoutes(request):
@@ -14,17 +18,6 @@ def getRoutes(request):
     return Response(routes)
 
 @api_view(['GET'])
-def getList(request):
-    try:
-        list = MangaTitle.objects.all()
-    except MangaTitle.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-    
-    if request.method == 'GET':
-        serializer = MangaTitleSerializer(list, many=True)
-        return Response(serializer.data)
-
-@api_view(['GET'])
 def getById(request, pk):
     try:
         item = MangaTitle.objects.get(id=pk)
@@ -34,3 +27,8 @@ def getById(request, pk):
     if request.method == 'GET':
         serializer = MangaTitleSerializer(item, many=False)
         return Response(serializer.data)
+
+class ApiMangaListView(ListAPIView):
+    queryset = MangaTitle.objects.all()
+    serializer_class = MangaTitleSerializer
+    pagination_class = PageNumberPagination

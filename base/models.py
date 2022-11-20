@@ -22,7 +22,7 @@ class MangaTitle(models.Model):
     chapterCount = models.PositiveSmallIntegerField(default=1)
     volumeCount = models.PositiveSmallIntegerField(default=0)
     startDate = models.DateField(null=True)
-    endDate = models.DateField(null=True)
+    endDate = models.DateField(null=True, blank=True)
     firstCoverImage = models.ImageField(upload_to='base/uploads/covers', null=True, blank=True)
 
     authors = models.ManyToManyField(MangaAuthor, related_name="authors", blank=True)
