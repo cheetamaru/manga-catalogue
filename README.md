@@ -1,21 +1,13 @@
-# manga-catalogue
+# manga-catalogue-back
 
 ```
-pip install virtualenv
-
-pip install djangorestframework
-
-python -m pip install Pillow
-
-python -m pip install django-cors-headers
+pip install -r requirements.txt
 
 virtualenv env
 
 env\scripts\activate
 
-pip install django
+python manage.py migrate
 
 python manage.py runserver
-
-python manage.py migrate
 ```
