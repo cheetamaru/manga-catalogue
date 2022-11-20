@@ -25,8 +25,8 @@ class MangaTitle(models.Model):
     endDate = models.DateField(null=True)
     firstCoverImage = models.ImageField(upload_to='base/uploads/covers', null=True, blank=True)
 
-    authors = models.ManyToManyField(MangaAuthor, related_name="authors", null=True, blank=True)
-    genres = models.ManyToManyField(Genre, related_name="genres", null=True, blank=True)
+    authors = models.ManyToManyField(MangaAuthor, related_name="authors", blank=True)
+    genres = models.ManyToManyField(Genre, related_name="genres", blank=True)
 
     class Status(models.TextChoices):
         FINISHED = 'finished', _('Finished')
