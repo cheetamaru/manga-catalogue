@@ -6,14 +6,14 @@ class MangaAuthorSerializer(ModelSerializer):
         model = MangaAuthor
         fields = '__all__'
 
-class GnereSerializer(ModelSerializer):
+class GenreSerializer(ModelSerializer):
     class Meta:
         model = Genre
         fields = '__all__'
 
 class MangaTitleSerializer(ModelSerializer):
     authors = MangaAuthorSerializer(many=True, read_only=True)
-    genres = GnereSerializer(many=True, read_only=True)
+    genres = GenreSerializer(many=True, read_only=True)
 
     class Meta:
         model = MangaTitle
