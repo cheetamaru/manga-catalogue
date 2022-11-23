@@ -2,10 +2,11 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 class MangaAuthor(models.Model):
-    name = models.CharField(max_length=200)
+    firstName = models.CharField(max_length=100, default="")
+    surname = models.CharField(max_length=100, default="")
 
     def __str__(self):
-        return self.name
+        return str(self.id)
 
 class Genre(models.Model):
     name = models.CharField(max_length=50)
@@ -17,7 +18,7 @@ class MangaTitle(models.Model):
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
 
-    name = models.CharField(max_length=200)
+    title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     chapterCount = models.PositiveSmallIntegerField(default=1)
     volumeCount = models.PositiveSmallIntegerField(default=0)
@@ -38,4 +39,4 @@ class MangaTitle(models.Model):
     status = models.CharField(max_length=12, null=True, choices=Status.choices)
 
     def __str__(self):
-        return self.name
+        return self.title
