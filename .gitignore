@@ -128,4 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+
+# DB static Assets
 base/uploads
