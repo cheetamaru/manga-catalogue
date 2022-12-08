@@ -15,5 +15,5 @@ class ApiMangaListView(ListAPIView):
     serializer_class = MangaTitleSerializer
     pagination_class = PageNumberPagination
     filter_backends = (SearchFilter, OrderingFilter, DjangoFilterBackend)
-    search_fields = ('name', 'description')
+    search_fields = ('title', 'description')
     filterset_fields = ('authors', 'genres', 'status')
