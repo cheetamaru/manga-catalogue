@@ -4,14 +4,26 @@ The backend for manga catalogue application. By [cheetamaru](https://github.com/
 
 🏮🏮🏮
 
-## Install env and dependencies:
+## Install env:
 ```
 pip install virtualenv
 
 virtualenv env
+```
 
+## Activate:
+
+Windows
+```
 env\scripts\activate
+```
+Mac
+```
+source env/bin/activate
+```
 
+## Install requirements:
+```
 pip install -r requirements.txt
 ```
 
